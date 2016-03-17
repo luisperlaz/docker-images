@@ -7,3 +7,6 @@ dbuser: {name: 'alfresco', password: 'alfresco'}
 dbbindhost: 127.0.0.1
 soffice_host: 127.0.0.1
 soffice_port: 8100
+
+lang: es_ES.UTF-8
+timezone: Europe/Madrid

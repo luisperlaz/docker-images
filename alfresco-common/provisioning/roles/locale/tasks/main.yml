@@ -1,0 +1,24 @@
+- name: install locale packages
+  apt: pkg={{item}} state=latest
+  with_items:
+    - locales
+    - language-pack-es
+    - language-pack-en
+
+- name: create locale.gen
+  template: src=locale.gen dest=/etc/locale.gen
+  notify: update locale-gen
+
+- name: configure locale (with UTF-8 charset)
+  template: src=locale dest=/etc/default/locale
+  notify: 
+    - reconfigure locales
+    - update locale
+
+- name: create timezone file
+  template: src=timezone dest=/etc/timezone
+  notify: update timezone
+
+- meta: flush_handlers
+
+  
