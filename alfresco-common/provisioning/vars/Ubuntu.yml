@@ -1,2 +1,7 @@
 common_packages:
  - unzip
+
+postgres_client_packages:
+ - postgresql-client
+ - python-psycopg2
+ - libpq-dev
