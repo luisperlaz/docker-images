@@ -1,0 +1,4 @@
+java_home: /opt/java/jdk
+
+dbhost: 127.0.0.1
+dbbindhost: 127.0.0.1

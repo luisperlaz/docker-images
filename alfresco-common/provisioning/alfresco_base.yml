@@ -1,0 +1,15 @@
+- hosts: localhost
+  user: root
+  sudo: True
+
+  roles: 
+  - { role: common, tags: ['common'] }
+  - { role: locale, tags: ['common'] }
+  - { role: java, tags: ['java'] }
+  - { role: postgresql-client, tags: ['alfresco'] }
+  - { role: alfresco, tags: ['alfresco'] }
+  
+  vars_files:
+  - "vars/{{ansible_distribution}}.yml"
+  - "configuration.yml"
+

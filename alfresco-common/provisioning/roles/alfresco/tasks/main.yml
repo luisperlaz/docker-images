@@ -1,0 +1,17 @@
+- name: download alfresco 
+  get_url: url={{alfresco_url}} dest=/tmp/alfresco_installer.bin mode=0700
+
+- name: copy installation config file
+  template: src=install_opts dest=/tmp/alfresco_install_opts
+
+- name: install alfresco
+  shell: "/tmp/alfresco_installer.bin --optionfile /tmp/alfresco_install_opts"
+
+- name: remove install config file
+  command: rm /tmp/alfresco_install_opts
+
+- name: rename install directory
+  command: mv /opt/alfresco /opt/alfresco-{{alfresco_version}}
+
+- name: make symlink to /opt/alfresco
+  file: src=/opt/alfresco-{{alfresco_version}} dest=/opt/alfresco state=link

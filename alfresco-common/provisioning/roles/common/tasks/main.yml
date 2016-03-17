@@ -1,0 +1,3 @@
+- name: install some common packages
+  apt: pkg={{item}} state=latest update_cache=yes
+  with_items: common_packages

@@ -1,0 +1,36 @@
+mode=unattended
+enable-components=alfrescosharepoint,alfrescogoogledocs
+disable-components=alfrescowcmqs,postgres,javaalfresco,libreofficecomponent
+
+
+# Use JDBC settings for an existing database
+jdbc_url=jdbc:postgresql://{{dbbindhost}}/{{dbname}}
+jdbc_driver=org.postgresql.Driver
+jdbc_database={{dbname}}
+jdbc_username={{dbuser.name}}
+jdbc_password={{dbuser.password}}
+
+# Install location
+prefix=/opt/alfresco
+
+alfresco_admin_password={{alfresco_admin_password}}
+
+# Don't install init scripts
+#baseunixservice_install_as_service=0
+
+
+tomcat_server_directory=/opt/alfresco/tomcat
+tomcat_server_domain=0.0.0.0
+tomcat_server_port=8080
+tomcat_server_shutdown_port=8005
+tomcat_server_ssl_port=8443
+tomcat_server_ajp_port=8009
+alfresco_ftp_port=21
+alfresco_rmi_port=50500
+alfresco_sharepoint_port=7070
+baseunixservice_install_as_service=1
+baseunixservice_script_name=alfresco
+libreoffice_port={{soffice_port}}
+
+alfrescocustomstack_services_startup=demand
+
