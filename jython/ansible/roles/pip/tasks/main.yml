@@ -1,0 +1,13 @@
+- name: copy ez_setup.py
+  copy: src=ez_setup.py dest=/tmp/ez_setup.py
+
+- name: install easy install on jython
+  shell: "{{jython_home}}/bin/jython /tmp/ez_setup.py"
+  become: True
+
+- name: unpack pip
+  unarchive: src=pip-1.2.1.tar.gz dest=/tmp copy=yes
+
+- name: install pip
+  shell: "{{jython_home}}/bin/easy_install /tmp/pip-1.2.1"
+  become: True

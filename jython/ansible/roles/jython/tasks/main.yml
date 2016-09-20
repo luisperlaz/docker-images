@@ -1,0 +1,12 @@
+- name: retrieving jython
+  get_url: url=http://search.maven.org/remotecontent?filepath=org/python/jython-installer/{{jython_version}}/jython-installer-{{jython_version}}.jar dest=/tmp/jython-installer.jar 
+
+- name: installs jython
+  command: java -jar /tmp/jython-installer.jar -s -d {{jython_home}} creates={{jython_home}}
+  become: True
+   
+- name: Add jython to the PATH
+  action: template src=templates/profile.d/jython.sh dest=/etc/profile.d/jython.sh
+  become: True
+
+

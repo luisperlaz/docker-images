@@ -1,0 +1,11 @@
+- hosts: localhost
+  user: ubuntu
+  gather_facts: False
+
+  vars:
+    jython_version: 2.7.1b3
+    jython_home: /usr/lib/jython-2.7
+
+  roles:
+  - "{{ role }}"
+
