@@ -1,0 +1,11 @@
+- name: install apt unzip
+  action: apt pkg=unzip state=present
+  become: True
+
+- name: retrieves gradle
+  unarchive: copy=no src="http://services.gradle.org/distributions/gradle-{{gradle_version}}-bin.zip" dest={{gradle_base_dir}} creates={{gradle_base_dir}}/gradle-{{gradle_version}}
+  become: True
+
+- name: Add gradle to the PATH
+  action: template src=templates/profile.d/gradle.sh dest=/etc/profile.d/gradle.sh
+  become: True

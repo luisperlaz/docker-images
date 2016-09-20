@@ -1,0 +1,11 @@
+- hosts: localhost
+  user: ubuntu
+  gather_facts: False
+
+  vars:
+    gradle_version: 3.0
+    gradle_base_dir: /opt
+
+  roles:
+  - "{{ role }}"
+

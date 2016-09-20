@@ -1,0 +1,12 @@
+- name: install ppa jdk
+  apt_repository: repo='ppa:webupd8team/java'
+  become: True
+
+- name: auto accept oracle license
+  shell: echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections
+  become: True
+
+- name: install apt Java
+  apt: pkg=oracle-java8-installer
+  become: True
+
