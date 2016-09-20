@@ -1,0 +1,6 @@
+- name: copy requirements file
+  copy: src=requirements.txt dest=/tmp/requirements.txt
+
+- name: install django and other python needed libraries
+  shell: "{{jython_home}}/bin/pip install -r /tmp/requirements.txt"
+  become: True
