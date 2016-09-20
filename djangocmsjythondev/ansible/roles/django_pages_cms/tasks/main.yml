@@ -1,0 +1,23 @@
+- name: install locales package
+  apt: pkg=locales state=latest
+  become: True
+
+- name: install apt patch package
+  apt: pkg=patch state=latest
+  become: True
+
+- name: copy cms pages requirements file
+  copy: src=pages_cms_requirements.txt dest=/tmp/pages_cms_requirements.txt
+
+- name: install cms pages needed libraries
+  shell: LC_ALL=es && {{jython_home}}/bin/pip install -r /tmp/pages_cms_requirements.txt --no-deps
+  become: True
+
+- name: patch dates in cms pages application
+  patch: src=patches/django_pages_fix_dates.patch strip=1 basedir={{jython_home}}/Lib/site-packages
+  become: True
+
+- name: patch get_pages_by_slug in cms pages application
+  patch: src=patches/django_pages_fix_get_pages_by_slug.patch strip=1 basedir={{jython_home}}/Lib/site-packages
+  become: True
+  

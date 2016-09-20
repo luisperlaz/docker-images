@@ -1,0 +1,14 @@
+diff -r -u a/pages/managers.py b/pages/managers.py
+--- a/pages/managers.py 2015-02-16 09:15:55.435234182 +0200
++++ b/pages/managers.py 2015-02-16 09:17:19.605234185 +0200
+@@ -271,9 +271,7 @@
+ 
+         :param slug: the wanted slug.
+         """
+-        ids = self.filter(type='slug', body=slug).values('page_id').annotate(
+-            max_creation_date=Max('creation_date')
+-        )
++        ids = self.filter(type='slug', body=slug).values('page_id')
+         return [content['page_id'] for content in ids]
+ 
+ 
