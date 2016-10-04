@@ -4,3 +4,7 @@
 - name: install django and other python needed libraries
   shell: "{{jython_home}}/bin/pip install -r /tmp/requirements.txt"
   become: True
+
+- name: install gettext
+  apt: name=gettext state=present
+  become: True
