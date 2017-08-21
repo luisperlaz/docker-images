@@ -1,0 +1,17 @@
+- name: Install needed packages
+  apt: name={{item}} state=installed
+  with_items:
+       - libfontconfig
+       - nodejs
+       - npm
+  become: true
+
+- name: create legacy node command link
+  file: path=/usr/bin/node src=/usr/bin/nodejs state=link
+  become: true
+
+- name: install karma and needed plugins
+  command: npm install --global karma karma-jasmine karma-phantomjs-launcher karma-chrome-launcher karma-firefox-launcher karma-junit-reporter karma-cli
+  become: true
+
+

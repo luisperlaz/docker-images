@@ -7,4 +7,5 @@ COPY ansible/roles /tmp/ansible/roles
 ENTRYPOINT ["/bin/bash", "--login"]
 
 RUN ansible-playbook -c local /tmp/ansible/role_playbook.yml -e role=django
+RUN ansible-playbook -c local /tmp/ansible/role_playbook.yml -e role=karma
 
