@@ -7,7 +7,6 @@ COPY ansible/roles /tmp/ansible/roles
 WORKDIR /tmp/ansible
 
 RUN ansible-playbook -c local role_playbook.yml -e role=jython
-RUN ansible-playbook -c local role_playbook.yml -e role=pip
 
 ENTRYPOINT ["/bin/bash", "--login"]
 
