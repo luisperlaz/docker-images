@@ -10,6 +10,10 @@
   file: path=/usr/bin/node src=/usr/bin/nodejs state=link
   become: true
 
+- name: npm unset strict-ssl
+  command: npm config set strict-ssl false
+  become: true
+
 - name: install karma and needed plugins
   command: npm install --global karma karma-jasmine karma-phantomjs-launcher karma-chrome-launcher karma-firefox-launcher karma-junit-reporter karma-cli
   become: true
